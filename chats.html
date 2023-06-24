@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+    <head><meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+         <link href="https://fonts.googleapis.com/css2?family=Crafty+Girls&family=Homemade+Apple&family=Major+Mono+Display&family=Merienda+One&family=Monsieur+La+Doulaise&family=Nerko+One&family=Niconne&family=Permanent+Marker&family=Sedgwick+Ave&family=Sriracha&display=swap" rel="stylesheet">
+          <script src="https://use.fontawesome.com/bae75bb48f.js">   </script><STYLE>
+
+            *{
+                padding: 0;
+                margin: 0;
+                box-sizing:border-box ;
+                scroll-behavior:smooth;
+            }
+            body {
+                width:100vh;
+                overflow:hidden;
+                overflow-y:scroll;
+            }
+            #loader{
+                height:100vh;
+                width:100vw;
+                overflow:hidden ;
+                display:grid;
+                place-items:center ;
+            }
+            #loader p{
+                font-size:28px;
+                color:#de3355;
+                text-align:center;
+                position:relative ;
+                font-family: 'Merienda One';
+                font-weight:550;
+                letter-spacing:-1px;
+            }
+            #container{
+                width:100vw;
+                overflow:hidden;
+                overflow-y:scroll;
+                display:none;
+            }
+            #navbar {
+                position: fixed;
+                top: 0;
+                width: 100vw;
+                transition:top 0.3s;
+                box-shadow:0 0px 5px .1px rgba(0, 0, 0, 0.3);
+                z-index:9999999;
+            }
+            #head{
+                height:auto;
+                width:100vw;
+                display:flex;
+                justify-content:center ;
+                background-color:#de3355;
+                position:relative ;
+                font-family: 'Merienda One', cursive;
+            }
+            #head p{
+                width:auto;
+                color:white;
+                font-size:23px;
+                margin:5px 0 5px 0;
+            }
+            img{
+                width:50px;
+                height:auto;
+            }
+            #m-list{
+                width:100vw;
+                height:100%;
+                display:grid;
+                place-items:center ;
+                margin:60px 0 0 0 ;
+            }
+            #d-cards{
+                height:auto;
+                width:85vw;
+                border-radius:5px;
+                display:flex;
+                align-items:center ;
+                justify-content:center ;
+                flex-direction:column;
+                margin:0 0 40px 0;
+                background-color:#eeeef1;
+                box-shadow:inset 2px 2px 7px .1px rgba(0, 0, 0, 0.04),3px 3px 8px .1px rgba(0, 0, 0, 0.2);
+                position:relative ;
+            }
+            #d-cards:before{
+                position:absolute ;
+                content:"";
+                height:100%;
+                width:85vw;
+                top:15px;
+                left:15px;
+                border-radius:5px;
+                background-color:#de3355;
+                border-radius:5px;
+                z-index:-1;
+            }
+            #d-dish{
+                width:75vw;
+                height:auto;
+                border-radius:5px;
+                display:grid;
+                place-items:center ;
+                position:relative ;
+                margin:15px 0 10px 0;
+                box-shadow:0 0px 7px .1px rgba(0, 0, 0, 0.09);
+                background-color:white;
+            }
+            #symbols{
+                height:20px;
+                width:auto;
+                position:absolute ;
+                top:0;
+                left:0;
+                margin:10px;
+            }
+            #dish{
+                margin:5px;
+                width:auto;
+                height:150px;
+            }
+            
+            #d-info{
+                text-align:center ;
+                width:70vw;
+                height:auto;
+                word-wrap:wrap;
+                margin:5px 0 10px 0;
+                color:#585858;
+            }
+            #d-name{
+                color:rgb(255,0,60);
+                text-align:left;
+                width:100%;
+                margin:5px 0 10px 10vw;
+                font-weight:500;
+                font-family: 'Merienda One', cursive;
+                font-size:20px;
+            }
+            #buy{
+                width:100%;
+                position:relative;
+                display:flex;
+                flex-flow:row-reverse;
+            }
+            #d-buy{
+                margin:0 0 10px 0;
+                border:none;
+                border-radius:20px;
+                padding:5px;
+                background-color:rgb(255,0,60);
+                color:white;
+                width:25vw;
+                letter-spacing:1px;
+                font-weight:400;
+                margin:5px 5vw 15px 0;
+                outline:none;
+                box-shadow:0 0px 7px .1px rgba(0, 0, 0, 0.2);
+                font-size:16px;
+            }
+            #d-buy:hover{
+                background-color:rgb(213, 0, 0);
+            }
+            #footer{
+                width:100vw;
+                height:auto;
+                text-align:center ;
+                margin:20px 0 0 0 ;
+                background-color:#de3355;
+                box-shadow:0 0 10px 0 rgba(0,0,0,.2);
+                display:grid;
+                place-items:center ;
+                opacity:1;
+                color:#fff;
+            }
+            hr{
+                width:80vw;
+                border:1px solid white;
+                margin:10px 0 10px 0 ;
+            }
+            #help{
+                display:flex;
+                flex-direction:row;
+                justify-content:space-around;
+                align-items:center ;
+                width:100vw;
+                height:auto;
+                
+            }
+            #footer pre{
+                font-size:18px;
+                text-decoration:underline ;
+                opacity:1;
+                text-align:left;
+                color:#fff;
+            }
+            .fa-heart{
+                color:white;
+                animation:heart 2s ease-in-out infinite;
+                transition:smooth;
+            }
+            @keyframes heart{
+                0%{
+                    font-size:14px;
+                    color:#fff;
+                }
+                50%{
+                    font-size:17px;
+                    color:crimson;
+                }
+                100%{
+                    font-size:14px;
+                    color:#fff;
+                }
+            }
+            #z{
+                font-size:18px;
+                font-family: 'Major Mono Display';
+                text-align:center;
+                position:relative ;
+                margin:5px 0 20px 0;
+                font-weight:600;
+                opacity:1;
+                color:#fff;
+            }
+            #s-icons i{
+                font-size:25px;
+                margin:10px 10vw 5px 10vw;
+            }</STYLE>
+    </head>
+    <body><script> 
+window.onload = ()=>{
+
+document.querySelector("#loader").style.display="none"; document.querySelector("#container").style.display="block";
+  var mList = [
+{   name:"PANI PURI  ₹30",
+    dish:"https://imagetolink.com/ib/r3XdHnM2C5.png",
+    icon:"https://dl.dropbox.com/s/10uwrklbloivrts/IMG_20210105_215408.png?dl=0",
+},{
+    name:"SAMOSA CHAT  ₹30",
+    dish:"https://imagetolink.com/ib/pRoag401YW.png",
+    icon:"https://dl.dropbox.com/s/10uwrklbloivrts/IMG_20210105_215408.png?dl=0",
+},
+{
+    name:"RAW MANGO SLICE  ₹20",
+    dish:"https://imagetolink.com/ib/4JxApByYEz.png",
+    icon:"https://dl.dropbox.com/s/10uwrklbloivrts/IMG_20210105_215408.png?dl=0",
+},{
+    name:"French Fries  ₹45",
+    dish:"https://imagetolink.com/ib/s9Iz5KdwKd.png",
+    icon:"https://dl.dropbox.com/s/10uwrklbloivrts/IMG_20210105_215408.png?dl=0",
+},{
+    name:"POPCORN  ₹20",
+    dish:"https://imagetolink.com/ib/uHryhCj7om.png",
+    icon:"https://dl.dropbox.com/s/10uwrklbloivrts/IMG_20210105_215408.png?dl=0",
+},{
+    name:"CHARMURI  ₹30",
+    dish:"https://imagetolink.com/ib/AxBR6ELA1T.png",
+    icon:"https://dl.dropbox.com/s/10uwrklbloivrts/IMG_20210105_215408.png?dl=0",
+},
+{
+    name:"SWEET CORN ₹30",
+    dish:"https://imagetolink.com/ib/QDolzdSjlh.png",
+    icon:"https://dl.dropbox.com/s/10uwrklbloivrts/IMG_20210105_215408.png?dl=0",
+},
+{
+    name:"WATERMELON SLICE ₹5",
+    dish:"https://imagetolink.com/ib/y2M1te2Oxa.png",
+    icon:"https://dl.dropbox.com/s/10uwrklbloivrts/IMG_20210105_215408.png?dl=0",
+},
+]
+for(var c = 0;c<mList.length;c++){ 
+document.getElementById("m-list").innerHTML+=`
+<div id="d-cards">
+
+<div id="d-dish">
+<img id="symbols" src="${mList[c].icon}">
+<img id="dish" src="${mList[c].dish}">
+</div>
+<h2 id="d-name">${mList[c].name}</h2>
+<h5 id="d-info"> </h5>
+<div id="buy">
+<button id="d-buy">Order Now</button>
+</div>
+</div>
+
+` 
+}
+
+
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("navbar").style.top = "0";
+  } else {
+document.getElementById("navbar").style.top = "-50px";
+  }
+  prevScrollpos = currentScrollPos;
+}
+}</script>
+    <div id="loader">
+         <p>The Whole Palate</p>
+            
+            </div>
+        <div id="container">
+            <div id="navbar">
+                <div id="head">
+                 <p>The Whole Palate</p>  
+                </div>
+            </div>
+           
+           <div id="m-list">
+               
+           </div>
+        
+           
+              <div id="footer">
+              <div id="s-icons">
+            <i class="fa fa-instagram" ></i>
+            <i class="fa fa-facebook-square" ></i>
+            <i class="fa fa-twitter" ></i>
+              </div>
+              <hr>
+        <div id="help">
+      <pre>
+Contact Us
+Section 
+
+</pre>
+<pre>
++91 72599 52349
+B
+
+</pre>
+</div>
+<hr>
+      <div id="z">Made by <i class="fa fa-heart"></i> Section B</div>
+      </div>
+    </div>
+        </div>
+        
+    </body>
+</html>
